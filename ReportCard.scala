@@ -25,6 +25,7 @@ object ReportCard extends App{
   def reportCardGenerator(marksList:List[Marks],studentList:List[Student]):List[(String,List[Int])]={
     val tempPair1=marksList.groupBy(x=> x.studentId)                  //Key value pair having studentId as key & list of list of MarksCase as value
     val tempList1=tempPair1.map(x=> (x._1,x._2.map(y=>y.marksObtained))).toList // Creating a list having tuples of total marks with associated studentID
+
     val result=for(x<-tempList1;y<-studentList if(x._1==y.id))yield (y.name,x._2) // combining the names and marks to get a new list of toppers
     result
   }
