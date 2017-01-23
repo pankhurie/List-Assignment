@@ -26,7 +26,9 @@ object TopBottom extends App {
 
   def topBottom(marksList:List[Marks],studentList:List[Student],subId:Int,count:Int,choice:String): List[(String, Int)]={
     val topBottomMarks = choice match {
-      case "bottom"=> l2.sortWith(_.marksObtained<_.marksObtained).sortWith(_.subjectId<_.subjectId).takeWhile(_.subjectId<=subId).dropWhile(_.subjectId<subId).take(count)
+      case "bottom"=> l2.sortWith(_.marksObtained<_.marksObtained)
+        .sortWith(_.subjectId<_.subjectId).takeWhile(_.subjectId<=subId)
+        .dropWhile(_.subjectId<subId).take(count)
       case "top"=> l2.sortWith(_.marksObtained>_.marksObtained).sortWith(_.subjectId>_.subjectId).takeWhile(_.subjectId>=subId).dropWhile(_.subjectId>subId).take(count)
     } //sorting according to top or bottom requirement and getting first $count elements of the list
     //To extract student names
